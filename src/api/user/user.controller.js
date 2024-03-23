@@ -7,8 +7,8 @@ class UserController {
 
   async createUser(req, res, next) {
     try {
-      console.log(req.body);
-      res.json({ message: "method called" });
+      const user = await this.userService.createUser(req.body);
+      res.json({ data: user });
     } catch (error) {
       next(error);
     }
@@ -16,7 +16,8 @@ class UserController {
 
   async getUser(req, res, next) {
     try {
-      res.json({ message: "method called" });
+      const user = await this.userService.getUser(req.body.userId);
+      res.json({ user });
     } catch (error) {
       next(error);
     }
